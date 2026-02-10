@@ -40,7 +40,33 @@
     </script>
 </head>
 <body class="bg-white dark:bg-gemini-dark text-gray-900 dark:text-gray-100">
+    <div id="onboarding-overlay" class="fixed inset-0 z-[100] bg-slate-900/90 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 text-center animate-in fade-in zoom-in duration-300">
+        <h2 class="text-3xl font-bold mb-2">Welcome to Betta AI 🐠</h2>
+        <p class="text-slate-600 mb-8">To get started, let's set up your brain.</p>
+        
+        <div class="space-y-4 text-left">
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">OpenRouter API Key</label>
+                <input type="password" id="initial-api-key" placeholder="sk-or-v1-..." class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none">
+                <a href="https://openrouter.ai/keys" target="_blank" class="text-xs text-blue-500 hover:underline mt-1 block">Get a free key here →</a>
+            </div>
 
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Select Model</label>
+                <select id="initial-model" class="w-full p-3 rounded-lg border border-slate-300 outline-none">
+                    <option value="google/gemini-2.0-flash-exp:free">Gemini 2.0 Flash (Free)</option>
+                    <option value="meta-llama/llama-3-8b-instruct:free">Llama 3 (Free)</option>
+                    <option value="openrouter/auto">Auto (Best Available)</option>
+                </select>
+            </div>
+
+            <button onclick="finishOnboarding()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-all shadow-lg hover:shadow-blue-500/20">
+                Start Chatting
+            </button>
+        </div>
+    </div>
+    </div>
     <div id="loading">
         <div class="flex flex-col items-center gap-4">
             <div class="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
