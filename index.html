@@ -23,6 +23,36 @@
         .dark #loading { background: #111827; color: white; }
     </style>
     <script>
+        // Run this when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    const savedKey = localStorage.getItem('openrouter_api_key');
+    if (!savedKey) {
+        document.getElementById('onboarding-overlay').classList.remove('hidden');
+    }
+});
+
+function finishOnboarding() {
+    const key = document.getElementById('initial-api-key').value.trim();
+    const model = document.getElementById('initial-model').value;
+
+    if (!key) {
+        alert("Please enter an API key to continue!");
+        return;
+    }
+
+    // Save to localStorage
+    localStorage.setItem('openrouter_api_key', key);
+    localStorage.setItem('selected_model', model);
+
+    // Update your app's internal state variable if you have one
+    // e.g., state.settings.apiKey = key; 
+
+    // Hide the overlay
+    document.getElementById('onboarding-overlay').classList.add('hidden');
+    
+    // Optional: Refresh or show a welcome message
+    console.log("Onboarding complete! Betta AI is ready.");
+        }
         tailwind.config = {
             darkMode: 'class',
             theme: {
